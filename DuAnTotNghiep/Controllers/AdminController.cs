@@ -28,6 +28,7 @@ namespace DuAnTotNghiep.Controllers
             return View();
         }
 
+        // GET: AdminController
         public ActionResult Login(string returnUrl)
         {
             string username = HttpContext.Session.GetString(SessionKey.NguoiDung.UserName);

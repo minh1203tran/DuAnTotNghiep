@@ -10,6 +10,7 @@ namespace DuAnTotNghiep.Models
     [Table("DonHangChiTiet")]
     public class DonHangChiTiet
     {
+        //test commit
         [Key]
         public int ChiTietId { get; set; }
 
