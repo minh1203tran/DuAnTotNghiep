@@ -18,12 +18,12 @@ namespace DuAnTotNghiep.Controllers
         
         protected string GetUserName()
         {
-            return HttpContext.Session.GetString(SessionKey.NguoiDung.UserName);
+            return HttpContext.Session.GetString(SessionKey.NhanVien.UserName);
         }
 
         protected string GetFullName()
         {
-            return HttpContext.Session.GetString(SessionKey.NguoiDung.FullName);
+            return HttpContext.Session.GetString(SessionKey.NhanVien.FullName);
         }
 
         protected string GetKHEmail()

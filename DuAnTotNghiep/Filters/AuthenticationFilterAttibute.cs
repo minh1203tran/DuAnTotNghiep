@@ -16,7 +16,7 @@ namespace DuAnTotNghiep.Filters
         {
             Controller controller = context.Controller as Controller;
             var session = context.HttpContext.Session;
-            string userName = context.HttpContext.Session.GetString(SessionKey.NguoiDung.UserName);
+            string userName = context.HttpContext.Session.GetString(SessionKey.NhanVien.UserName);
             var sessionStatus = ((userName != null && userName != "") ? true : false);
             if (controller != null)
             {

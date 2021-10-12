@@ -28,7 +28,7 @@ namespace DuAnTotNghiep.Models
 
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [Required(ErrorMessage = "Bạn phải chọn ngày đặt."), Display(Name = "Ngày đặt")]
-        public DateTime NgatDat { get; set; }
+        public DateTime NgayDat { get; set; }
 
         [Required, Range(0, double.MaxValue, ErrorMessage = "Bạn phải nhập giá tiền.")]
         [Display(Name = "Tổng tiền")]

@@ -155,7 +155,7 @@ namespace DuAnTotNghiep.Controllers
                     TrangThaiDonHang = TrangThaiDonHang.MoiDat,
                     KhachHangId = khachhangid,
                     TongTien = total,
-                    NgatDat = DateTime.Now,
+                    NgayDat = DateTime.Now,
                     GhiChu = ""
                 };
                 _donhangservice.AddDonHang(donhang);

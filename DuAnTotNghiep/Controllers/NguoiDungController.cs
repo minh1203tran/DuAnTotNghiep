@@ -12,45 +12,45 @@ using System.Threading.Tasks;
 namespace DuAnTotNghiep.Controllers
 {
     [AuthenticationFilterAttibute]
-    public class NguoiDungController : BaseController
+    public class NhanVienController : BaseController
     {
         private readonly IWebHostEnvironment _webhostenvironment;
-        private INguoiDungService _nguoidungservice;
+        private INhanVienService _nhanvienservice;
 
-        public NguoiDungController(IWebHostEnvironment webhostenvironment, INguoiDungService nguoidungservice)
+        public NhanVienController(IWebHostEnvironment webhostenvironment, INhanVienService nhanvienservice)
         {
             _webhostenvironment = webhostenvironment;
-            _nguoidungservice = nguoidungservice;
+            _nhanvienservice = nhanvienservice;
         }
 
-        // GET: NguoiDungController
+        // GET: NhanVienController
         public ActionResult Index()
         {
-            return View(_nguoidungservice.GetNguoiDungAll());
+            return View(_nhanvienservice.GetNhanVienAll());
         }
 
-        // GET: NguoiDungController/Details/5
+        // GET: NhanVienController/Details/5
         public ActionResult Details(int id)
         {
-            var nguoidung = _nguoidungservice.GetNguoiDung(id);
-            return View(nguoidung);
+            var nhanvien = _nhanvienservice.GetNhanVien(id);
+            return View(nhanvien);
         }
 
-        // GET: NguoiDungController/Create
+        // GET: NhanVienController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: NguoiDungController/Create
+        // POST: NhanVienController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(NguoiDung nguoidung)
+        public ActionResult Create(NhanVien nhanvien)
         {
             try
             {
-                _nguoidungservice.AddNguoiDung(nguoidung);
-                return RedirectToAction(nameof(Details), new { id = nguoidung.NguoiDungId });
+                _nhanvienservice.AddNhanVien(nhanvien);
+                return RedirectToAction(nameof(Details), new { id = nhanvien.NhanVienId });
             }
             catch
             {
@@ -58,25 +58,25 @@ namespace DuAnTotNghiep.Controllers
             }
         }
 
-        // GET: NguoiDungController/Edit/5
+        // GET: NhanVienController/Edit/5
         public ActionResult Edit(int id)
         {
-            var nguoidung = _nguoidungservice.GetNguoiDung(id);
-            return View(nguoidung);
+            var nhanvien = _nhanvienservice.GetNhanVien(id);
+            return View(nhanvien);
         }
 
-        // POST: NguoiDungController/Edit/5
+        // POST: NhanVienController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, NguoiDung nguoidung)
+        public ActionResult Edit(int id, NhanVien nhanvien)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _nguoidungservice.EditNguoiDung(id, nguoidung);
+                    _nhanvienservice.EditNhanVien(id, nhanvien);
                 }
-                return RedirectToAction(nameof(Details), new { id = nguoidung.NguoiDungId });
+                return RedirectToAction(nameof(Details), new { id = nhanvien.NhanVienId });
             }
             catch
             {

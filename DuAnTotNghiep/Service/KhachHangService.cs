@@ -67,7 +67,6 @@ namespace DuAnTotNghiep.Service
                     _khachhang.PassWord = khachhang.PassWord;
                     _khachhang.ConfirmPassWord = khachhang.PassWord;
                 }
-                _khachhang.MoTa = khachhang.MoTa;
                 _datacontext.Update(_khachhang);
                 _datacontext.SaveChanges();
                 ret = khachhang.KhachHangId;

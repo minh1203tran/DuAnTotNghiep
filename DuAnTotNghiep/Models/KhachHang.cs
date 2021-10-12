@@ -45,10 +45,5 @@ namespace DuAnTotNghiep.Models
         [DataType(DataType.Password)]
         [Compare("PassWord", ErrorMessage = "Mật khẩu bạn nhập lại không đúng.")]
         public string ConfirmPassWord { get; set; }
-
-        [StringLength(250)]
-        [Column(TypeName = "nvarchar(250)")]
-        [Display(Name = "Mô tả")]
-        public string MoTa { get; set; }
     }
 }

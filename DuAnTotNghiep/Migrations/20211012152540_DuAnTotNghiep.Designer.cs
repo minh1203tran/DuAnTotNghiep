@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DuAnTotNghiep.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210920161828_DuAnTotNghiep")]
+    [Migration("20211012152540_DuAnTotNghiep")]
     partial class DuAnTotNghiep
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,7 +35,7 @@ namespace DuAnTotNghiep.Migrations
                     b.Property<int>("KhachHangId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("NgatDat")
+                    b.Property<DateTime>("NgayDat")
                         .HasColumnType("datetime2");
 
                     b.Property<double>("TongTien")
@@ -105,10 +105,6 @@ namespace DuAnTotNghiep.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<string>("MoTa")
-                        .HasColumnType("nvarchar(250)")
-                        .HasMaxLength(250);
-
                     b.Property<DateTime?>("NgaySinh")
                         .HasColumnType("datetime2");
 
@@ -126,18 +122,15 @@ namespace DuAnTotNghiep.Migrations
                     b.ToTable("KhachHang");
                 });
 
-            modelBuilder.Entity("DuAnTotNghiep.Models.NguoiDung", b =>
+            modelBuilder.Entity("DuAnTotNghiep.Models.NhanVien", b =>
                 {
-                    b.Property<int>("NguoiDungId")
+                    b.Property<int>("NhanVienId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<bool>("Admin")
                         .HasColumnType("bit");
-
-                    b.Property<DateTime?>("DOB")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -148,14 +141,17 @@ namespace DuAnTotNghiep.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<bool>("Looked")
-                        .HasColumnType("bit");
+                    b.Property<DateTime?>("NgaySinh")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("PassWord")
                         .HasColumnType("varchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<string>("Title")
+                    b.Property<bool>("SuDung")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("TenChucVu")
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
@@ -164,9 +160,9 @@ namespace DuAnTotNghiep.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.HasKey("NguoiDungId");
+                    b.HasKey("NhanVienId");
 
-                    b.ToTable("NguoiDung");
+                    b.ToTable("NhanVien");
                 });
 
             modelBuilder.Entity("DuAnTotNghiep.Models.SanPham", b =>

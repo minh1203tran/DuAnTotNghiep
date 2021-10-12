@@ -15,12 +15,12 @@ namespace DuAnTotNghiep.Controllers
     public class AdminController : Controller
     {
         private readonly IWebHostEnvironment _webhostenvironment;
-        private INguoiDungService _nguoidungservice;
+        private INhanVienService _nhanvienservice;
 
-        public AdminController(IWebHostEnvironment webhostenvironment, INguoiDungService nguoidungservice)
+        public AdminController(IWebHostEnvironment webhostenvironment, INhanVienService nhanvienservice)
         {
             _webhostenvironment = webhostenvironment;
-            _nguoidungservice = nguoidungservice;
+            _nhanvienservice = nhanvienservice;
         }
 
         public ActionResult Index()
@@ -31,7 +31,7 @@ namespace DuAnTotNghiep.Controllers
         // GET: AdminController
         public ActionResult Login(string returnUrl)
         {
-            string username = HttpContext.Session.GetString(SessionKey.NguoiDung.UserName);
+            string username = HttpContext.Session.GetString(SessionKey.NhanVien.UserName);
             if (username != null && username != "")
             {
                 return RedirectToAction("Index", "Home");
@@ -47,12 +47,12 @@ namespace DuAnTotNghiep.Controllers
         {
             if (ModelState.IsValid)
             {
-                NguoiDung nguoidung = _nguoidungservice.Login(viewlogin);
-                if (nguoidung != null)
+                NhanVien nhanvien = _nhanvienservice.Login(viewlogin);
+                if (nhanvien != null)
                 {
-                    HttpContext.Session.SetString(SessionKey.NguoiDung.UserName, nguoidung.UserName);
-                    HttpContext.Session.SetString(SessionKey.NguoiDung.FullName, nguoidung.FullName);
-                    HttpContext.Session.SetString(SessionKey.NguoiDung.NguoiDungContext, JsonConvert.SerializeObject(nguoidung));
+                    HttpContext.Session.SetString(SessionKey.NhanVien.UserName, nhanvien.UserName);
+                    HttpContext.Session.SetString(SessionKey.NhanVien.FullName, nhanvien.FullName);
+                    HttpContext.Session.SetString(SessionKey.NhanVien.NhanVienContext, JsonConvert.SerializeObject(nhanvien));
                     return RedirectToAction(nameof(Index), "Admin");
                 }
             }
@@ -63,9 +63,9 @@ namespace DuAnTotNghiep.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Logout()
         {
-            HttpContext.Session.GetString(SessionKey.NguoiDung.UserName);
-            HttpContext.Session.GetString(SessionKey.NguoiDung.FullName);
-            HttpContext.Session.GetString(SessionKey.NguoiDung.NguoiDungContext);
+            HttpContext.Session.GetString(SessionKey.NhanVien.UserName);
+            HttpContext.Session.GetString(SessionKey.NhanVien.FullName);
+            HttpContext.Session.GetString(SessionKey.NhanVien.NhanVienContext);
             return RedirectToAction(nameof(Index), "Admin");
         }
     }

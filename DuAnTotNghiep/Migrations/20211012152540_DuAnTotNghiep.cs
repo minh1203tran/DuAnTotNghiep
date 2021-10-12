@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DuAnTotNghiep.Migrations
 {
-    public partial class DATN : Migration
+    public partial class DuAnTotNghiep : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,8 +18,7 @@ namespace DuAnTotNghiep.Migrations
                     PhoneName = table.Column<string>(type: "varchar(10)", nullable: false),
                     EmailAddress = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     PassWord = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
-                    ConfirmPassWord = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
-                    MoTa = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true)
+                    ConfirmPassWord = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -27,23 +26,23 @@ namespace DuAnTotNghiep.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "NguoiDung",
+                name: "NhanVien",
                 columns: table => new
                 {
-                    NguoiDungId = table.Column<int>(nullable: false)
+                    NhanVienId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     FullName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Email = table.Column<string>(nullable: false),
-                    Title = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    DOB = table.Column<DateTime>(nullable: true),
+                    TenChucVu = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    NgaySinh = table.Column<DateTime>(nullable: true),
                     Admin = table.Column<bool>(nullable: false),
-                    Looked = table.Column<bool>(nullable: false),
+                    SuDung = table.Column<bool>(nullable: false),
                     PassWord = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_NguoiDung", x => x.NguoiDungId);
+                    table.PrimaryKey("PK_NhanVien", x => x.NhanVienId);
                 });
 
             migrationBuilder.CreateTable(
@@ -71,7 +70,7 @@ namespace DuAnTotNghiep.Migrations
                     DonHangId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     KhachHangId = table.Column<int>(nullable: false),
-                    NgatDat = table.Column<DateTime>(nullable: false),
+                    NgayDat = table.Column<DateTime>(nullable: false),
                     TongTien = table.Column<double>(nullable: false),
                     TrangThaiDonHang = table.Column<int>(nullable: false),
                     GhiChu = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true)
@@ -138,7 +137,7 @@ namespace DuAnTotNghiep.Migrations
                 name: "DonHangChiTiet");
 
             migrationBuilder.DropTable(
-                name: "NguoiDung");
+                name: "NhanVien");
 
             migrationBuilder.DropTable(
                 name: "DonHang");

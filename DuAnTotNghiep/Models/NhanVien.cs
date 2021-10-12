@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace DuAnTotNghiep.Models
 {
-    [Table("NguoiDung")]
-    public class NguoiDung
+    [Table("NhanVien")]
+    public class NhanVien
     {
         [Key]
-        public int NguoiDungId { get; set; }
+        public int NhanVienId { get; set; }
 
         [Column(TypeName = "nvarchar(50)"), StringLength(50)]
         [Display(Name = "Tài khoản")]
@@ -29,17 +29,17 @@ namespace DuAnTotNghiep.Models
 
         [Display(Name = "Chức vụ")]
         [Column(TypeName = "nvarchar(50)"), StringLength(50)]
-        public string Title { get; set; }
+        public string TenChucVu { get; set; }
 
         [Display(Name = "Ngày sinh")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime? DOB { get; set; }
+        public DateTime? NgaySinh { get; set; }
 
         [Display(Name = "Quản trị")]
         public bool Admin { get; set; }
 
         [Display(Name = "Sử dụng")]
-        public bool Looked { get; set; }
+        public bool SuDung { get; set; }
 
         [Display(Name = "Mật khẩu")]
         [Column(TypeName = "varchar(50)"), StringLength(50)]
