@@ -44,7 +44,7 @@ namespace DuAnTotNghiep
 
             services.AddTransient<IMahoaHelper, MahoaHelper>();
 
-            services.AddTransient<INguoiDungService, NguoiDungService>();
+            services.AddTransient<INhanVienService, NhanVienService>();
 
             services.AddTransient<ISanPhamService, SanPhamService>();
 

@@ -22,7 +22,7 @@ namespace DuAnTotNghiep.Models
 
         public DbSet<KhachHang> KhachHangs { get; set; }
 
-        public DbSet<NguoiDung> NguoiDungs { get; set; }
+        public DbSet<NhanVien> NhanViens { get; set; }
 
         public DbSet<SanPham> SanPhams { get; set; }
     }
