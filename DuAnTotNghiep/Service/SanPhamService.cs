@@ -16,7 +16,7 @@ namespace DuAnTotNghiep.Service
             _datacontext = datacontext;
         }
 
-        public List<SanPham> GetSanPhamAdd()
+        public List<SanPham> GetSanPhamAll()
         {
             List<SanPham> list = new List<SanPham>();
             list = _datacontext.SanPhams.ToList();

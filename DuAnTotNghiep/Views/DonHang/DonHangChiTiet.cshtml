@@ -1,0 +1,65 @@
+﻿@model IEnumerable<DuAnTotNghiep.Models.DonHangChiTiet>
+
+@{
+    ViewData["Title"] = "DonHangChiTiet";
+}
+
+<h1>DonHangChiTiet</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ChiTietId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DonHangId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SanPhamId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoLuong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ThanhTien)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GhiChu)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChiTietId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonHangId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SanPhamId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLuong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThanhTien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GhiChu)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

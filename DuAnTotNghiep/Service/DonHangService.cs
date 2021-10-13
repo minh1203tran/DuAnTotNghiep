@@ -20,14 +20,14 @@ namespace DuAnTotNghiep.Service
         public List<DonHang> GetDonHangAll()
         {
             List<DonHang> list = new List<DonHang>();
-            list = _datacontext.DonHangs.OrderByDescending(x => x.NgatDat).Include(x => x.KhachHang).Include(x => x.DonHangChiTiets).ToList();
+            list = _datacontext.DonHangs.OrderByDescending(x => x.NgayDat).Include(x => x.KhachHang).Include(x => x.DonHangChiTiets).ToList();
             return list;
         }
 
         public List<DonHang> GetDonHangbyKhachHang(int KhachHangId)
         {
             List<DonHang> list = new List<DonHang>();
-            list = _datacontext.DonHangs.Where(x => x.KhachHangId == KhachHangId).OrderByDescending(x => x.NgatDat).Include(x => x.KhachHang).Include(x => x.DonHangChiTiets).ToList();
+            list = _datacontext.DonHangs.Where(x => x.KhachHangId == KhachHangId).OrderByDescending(x => x.NgayDat).Include(x => x.KhachHang).Include(x => x.DonHangChiTiets).ToList();
             return list;
         }
 

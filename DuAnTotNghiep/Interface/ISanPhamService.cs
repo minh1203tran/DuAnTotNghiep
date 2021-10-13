@@ -8,7 +8,7 @@ namespace DuAnTotNghiep.Interface
 {
     public interface ISanPhamService
     {
-        List<SanPham> GetSanPhamAdd();
+        List<SanPham> GetSanPhamAll();
 
         SanPham GetSanPham(int id);
 
