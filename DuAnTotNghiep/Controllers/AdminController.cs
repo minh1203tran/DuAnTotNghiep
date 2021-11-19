@@ -52,8 +52,9 @@ namespace DuAnTotNghiep.Controllers
                 {
                     HttpContext.Session.SetString(SessionKey.NhanVien.UserName, nhanvien.UserName);
                     HttpContext.Session.SetString(SessionKey.NhanVien.FullName, nhanvien.FullName);
+                    HttpContext.Session.SetString(SessionKey.NhanVien.Role, nhanvien.Role.ToString());
                     HttpContext.Session.SetString(SessionKey.NhanVien.NhanVienContext, JsonConvert.SerializeObject(nhanvien));
-                    return RedirectToAction(nameof(Index), "Admin");
+                    return RedirectToAction(nameof(Index), "NhanVien");
                 }
             }
             return View(viewlogin);
@@ -63,10 +64,11 @@ namespace DuAnTotNghiep.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Logout()
         {
-            HttpContext.Session.GetString(SessionKey.NhanVien.UserName);
-            HttpContext.Session.GetString(SessionKey.NhanVien.FullName);
-            HttpContext.Session.GetString(SessionKey.NhanVien.NhanVienContext);
-            return RedirectToAction(nameof(Index), "Admin");
+            HttpContext.Session.Remove(SessionKey.NhanVien.UserName);
+            HttpContext.Session.Remove(SessionKey.NhanVien.FullName);
+            HttpContext.Session.Remove(SessionKey.NhanVien.Role);
+            HttpContext.Session.Remove(SessionKey.NhanVien.NhanVienContext);
+            return RedirectToAction(nameof(Login), "Admin");
         }
     }
 }

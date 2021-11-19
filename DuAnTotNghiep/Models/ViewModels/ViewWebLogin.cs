@@ -8,10 +8,11 @@ namespace DuAnTotNghiep.Models
 {
     public class ViewWebLogin
     {
-        [Required]
+        [Required(ErrorMessage = "Vui lòng nhập email!")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vui lòng nhập mật khẩu!")]
+        [DataType(DataType.Password)]
         public string PassWord { get; set; }
 
         public string ReturnUrl { get; set; }

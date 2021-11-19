@@ -11,9 +11,10 @@ namespace DuAnTotNghiep.Models
     public class NhanVien
     {
         [Key]
+        [Display(Name = "Mã nhân viên")]
         public int NhanVienId { get; set; }
 
-        [Column(TypeName = "nvarchar(50)"), StringLength(50)]
+        [Column(TypeName = "varchar(50)"), StringLength(50)]
         [Display(Name = "Tài khoản")]
         [Required(ErrorMessage = "Bạn phải nhập tên tài khoản.")]
         public string UserName { get; set; }
@@ -36,7 +37,7 @@ namespace DuAnTotNghiep.Models
         public DateTime? NgaySinh { get; set; }
 
         [Display(Name = "Quản trị")]
-        public bool Admin { get; set; }
+        public bool Role { get; set; }
 
         [Display(Name = "Sử dụng")]
         public bool SuDung { get; set; }

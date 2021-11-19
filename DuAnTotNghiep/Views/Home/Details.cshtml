@@ -11,18 +11,6 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DonHangId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DonHangId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.KhachHangId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.KhachHangId)
-        </dd>
-        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.NgayDat)
         </dt>
         <dd class = "col-sm-10">
@@ -47,8 +35,8 @@
             @Html.DisplayFor(model => model.GhiChu)
         </dd>
     </dl>
+    <partial name="_DonHangChiTiet" for="@Model.DonHangChiTiets" />
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="History">Back to List</a>
 </div>

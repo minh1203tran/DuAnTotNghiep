@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - DuAnTotNghiep</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css//indexhome.css" />
+    <link rel="stylesheet" href="~/css/webLayout.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" />
+    <style>
+        .nav-item {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 100;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-success">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+            <div class="container">
+                <img src="~/Images/KINGSHOES02.png" style="width: 50px; height: 50px;" />
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_WebLoginPartial" />
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark mr-5" asp-area="" asp-controller="Home" asp-action="Index">Trang chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark mr-5" asp-area="" asp-controller="Home" asp-action="GioiThieu">Giới thiệu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark mr-5" asp-area="" asp-controller="Home" asp-action="LienHe">Liên hệ</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container-fluid">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    @*<div>
+        <h3>CỬA HÀNG TRỰC TUYẾN</h3>
+        <div class="chunhat row">
+            <a asp-area="" asp-controller="Home" asp-action="Index">
+                <img src="~/Images/logo_lazada.jpg" style="margin-left: 135px;" />
+            </a>
+            <a asp-area="" asp-controller="Home" asp-action="Index">
+                <img src="~/Images/logo_sendo.jpg" style="margin-left: 24px;" />
+            </a>
+            <a asp-area="" asp-controller="Home" asp-action="Index">
+                <img src="~/Images/logo_shoppe.png" style="margin-left: 24px;" />
+            </a>
+            <a asp-area="" asp-controller="Home" asp-action="Index">
+                <img src="~/Images/logo_tiki.jpg" style="margin-left: 24px;" />
+            </a>
+        </div>
+    </div>
+    <br />
+    <div>
+        <h3>LÝ DO KHÁCH HÀNG NÊN CHỌN</h3>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-timeline">
+                        <div href="#" class="timeline">
+                            <div class="timeline-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                            <div class="timeline-content">
+                                <h3 class="title">Giá tốt nhất thị trường</h3>
+                                <p class="description">
+                                    Vì có thị trường rộng lớn nên chúng tôi sẽ đưa ra mức giá tốt nhất thị trường cho sản phẩm của bạn. Bạn không cần lo ngại về việc tăng giá vì chúng tôi luôn luôn bán cùng giá với thị trường.
+                                </p>
+                            </div>
+                        </div>
+                        <div href="#" class="timeline">
+                            <div class="timeline-icon"><i class="fas fa-sync-alt"></i></div>
+                            <div class="timeline-content">
+                                <h3 class="title">Sản phẩm được 1 đổi 1</h3>
+                                <p class="description">
+                                    Chính sách bảo hàng 1 đổi 1 trong vòng 3 ngày là chính sách vô cùng đặc biệt cho khách hàng. Khi được hưởng chính sách này khách hàng sẽ được đổi mới ngày một sản phẩm tương tự cùng loại.
+                                </p>
+                            </div>
+                        </div>
+                        <div href="#" class="timeline">
+                            <div class="timeline-icon"><i class="fas fa-user-shield"></i></div>
+                            <div class="timeline-content">
+                                <h3 class="title">Luôn luôn bảo mật thông tin khách hàng</h3>
+                                <p class="description">
+                                    Cửa hàng của chúng tôi không bán, chia sẽ hay trao đổi thông tin cá nhân của khách hàng thu nhập trên trang web cho một bên thứ ba nào khác. Thông tin cá nhân thu thập được sẽ chỉ được sử dụng trong nội bộ cửa hàng.
+                                </p>
+                            </div>
+                        </div>
+                        <div href="#" class="timeline">
+                            <div class="timeline-icon"><i class="fas fa-truck"></i></div>
+                            <div class="timeline-content">
+                                <h3 class="title">Đặt hàng thả ga, giao trong 1 giờ</h3>
+                                <p class="description">
+                                    Hỗ trợ mùa dịch, chúng tôi mang đến chương trình "Mua hàng Online" dành cho quý khách hàng. Đảm bảo sản phẩm chất lượng, đầy đủ bảo hàng như mua tại cửa hàng. Miễn phí khi ship trong nội thành.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <footer class="section footer-classic context-dark bg-image" style="background: #2d3246;">
+        <div class="container">
+            <div class="row row-30">
+                <div class="col-md-4 col-xl-5">
+                    <br />
+                    <div class="pr-xl-4">
+                        <a class="brand" href="index.html"><img class="brand-logo-light" src="~/Images/KINGSHOES01.png" alt="" width="140" height="37" srcset="images/agency/logo-retina-inverse-280x74.png 2x"></a>
+                        <p>
+                            <h5>Chất lượng</h5>
+                            <h6>King Shoes đảm bảo chất lượng cho tất cả sản phẩm bán tại cửa hàng bằng chính sách bản hàng vĩnh viễn.</h6>
+                            <h5>Phục vụ</h5>
+                            <h6>Kinh Shoes cam kết chất lượng phục vụ tốt nhất, chuyên nghiệp nhất cho mọi khách hàng bằng chính sách hoàn tiền và tặng quà nếu nhân viên phục vụ quý khách không chu đáo.</h6>
+                        </p>
+                        <p class="rights"><span>©  </span><span class="copyright-year">2018</span><span> </span><span>King Shops</span><span>. </span><span>All Rights Reserved.</span></p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <br />
+                    <h5>Liên hệ</h5>
+                    <dl class="contact-list">
+                        <dt>Địa chỉ:</dt>
+                        <dd>Công viên phần mềm Quang Trung</dd>
+                    </dl>
+                    <dl class="contact-list">
+                        <dt>email:</dt>
+                        <dd><a href="mailto:#">kingshoes1309@gmail.com</a></dd>
+                    </dl>
+                    <dl class="contact-list">
+                        <dt>Số điện thoại:</dt>
+                        <dd>
+                            <a href="tel:#">0395.193.386</a>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="col-md-4 col-xl-3">
+                    <br />
+                    <h5>Links</h5>
+                    <ul class="nav-list">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Projects</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contacts</a></li>
+                        <li><a href="#">Pricing</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>*@
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

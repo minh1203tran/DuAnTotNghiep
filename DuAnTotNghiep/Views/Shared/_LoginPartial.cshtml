@@ -1,0 +1,19 @@
+﻿@using DuAnTotNghiep.Models;
+@using Microsoft.AspNetCore.Http;
+@using Microsoft.AspNetCore.Http.Extensions;
+@using DuAnTotNghiep.Constant;
+@{ string userName = Context.Session.GetString(SessionKey.NhanVien.UserName); }
+@{ string fullName = Context.Session.GetString(SessionKey.NhanVien.FullName); }
+<ul class="navbar-nav">
+    @if (userName != null & userName != "")
+    {
+        <li class="nav-item">
+            <a id="manage" class="nav-link text-dark">Chào @fullName!</a>
+        </li>
+        <li class="nav-item">
+            <form asp-area="" asp-controller="Admin" asp-action="Logout" method="post" id="logoutForm">
+                <button id="logoutForm" type="submit" class="nav-link btn btn-warning text-dark">Đăng xuất</button>
+            </form>
+        </li>
+    }
+</ul>

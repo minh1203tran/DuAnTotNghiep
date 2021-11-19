@@ -1,20 +1,19 @@
 ﻿@model IEnumerable<DuAnTotNghiep.Models.NhanVien>
+@using Microsoft.AspNetCore.Http;
+@using DuAnTotNghiep.Constant;
+@{ string role = Context.Session.GetString(SessionKey.NhanVien.Role); }
 
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+@if (role == "True")
+{
+    <a asp-action="Create" class="btn btn-primary">Tạo nhân viên</a>
+}
+<br /><br />
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NhanVienId)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.UserName)
             </th>
@@ -31,59 +30,56 @@
                 @Html.DisplayNameFor(model => model.NgaySinh)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Admin)
+                @Html.DisplayNameFor(model => model.Role)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.SuDung)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PassWord)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ConfirmPassWord)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NhanVienId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TenChucVu)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NgaySinh)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Admin)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SuDung)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PassWord)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ConfirmPassWord)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenChucVu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgaySinh)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Role)*@
+                    @if (item.Role)
+                    {
+                        <span>Quan tri vien</span>
+                    }
+                    else
+                    {
+                        <span>Nhan vien</span>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SuDung)
+                </td>
+                <td>
+                    @if (role == "True")
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.NhanVienId" class="btn btn-primary">Sửa</a>
+                    }
+                    <a asp-action="Details" asp-route-id="@item.NhanVienId" class="btn btn-primary">Chi tiết</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+

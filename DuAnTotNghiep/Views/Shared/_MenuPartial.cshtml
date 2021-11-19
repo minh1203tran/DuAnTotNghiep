@@ -1,0 +1,20 @@
+﻿@using DuAnTotNghiep.Models;
+@using Microsoft.AspNetCore.Http;
+@using Microsoft.AspNetCore.Http.Extensions;
+@using DuAnTotNghiep.Constant;
+@{ string userName = Context.Session.GetString(SessionKey.NhanVien.UserName); }
+@if (userName != null && userName != "")
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark btn btn-warning mr-2" asp-area="" asp-controller="NhanVien" asp-action="Index">Nhân viên</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark btn btn-warning mr-2" asp-area="" asp-controller="SanPham" asp-action="Index">Sản phẩm</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark btn btn-warning mr-2" asp-area="" asp-controller="DonHang" asp-action="Index">Đơn hàng</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark btn btn-warning mr-2" asp-area="" asp-controller="KhachHang" asp-action="Index">Khách hàng</a>
+    </li>
+}

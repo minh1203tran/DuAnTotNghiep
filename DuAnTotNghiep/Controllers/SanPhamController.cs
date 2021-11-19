@@ -57,7 +57,7 @@ namespace DuAnTotNghiep.Controllers
                     if (sanpham.ImageFile.Length > 0)
                     {
                         string rootpath = Path.Combine(_webhostenvironment.WebRootPath, "Images");
-                        _uploadhelper.UploadImage(sanpham.ImageFile, rootpath, "SanPham");
+                        _uploadhelper.UploadImage(sanpham.ImageFile, rootpath, "hinhanh");
                         sanpham.HinhAnh = sanpham.ImageFile.FileName;
                     }
                 }
@@ -91,7 +91,7 @@ namespace DuAnTotNghiep.Controllers
                         if (sanpham.ImageFile.Length > 0)
                         {
                             string rootpath = Path.Combine(_webhostenvironment.WebRootPath, "Images");
-                            _uploadhelper.UploadImage(sanpham.ImageFile, rootpath, "SanPham");
+                            _uploadhelper.UploadImage(sanpham.ImageFile, rootpath, "hinhanh");
                             sanpham.HinhAnh = sanpham.ImageFile.FileName;
                         }
                     }

@@ -17,5 +17,7 @@ namespace DuAnTotNghiep.Interface
         int EditNhanVien(int id, NhanVien nhanvien);
 
         NhanVien Login(ViewLogin viewlogin);
+
+        //IEnumerable<NhanVien> ListPaging(int page, int pageSize);
     }
 }

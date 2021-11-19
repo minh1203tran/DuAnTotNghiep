@@ -11,6 +11,7 @@ namespace DuAnTotNghiep.Constant
         {
             public const string UserName = "UserName";
             public const string FullName = "FullName";
+            public const string Role = "Role";
             public const string Valid = "Valid";
             public const string NhanVienContext = "NhanVienContext";
         }

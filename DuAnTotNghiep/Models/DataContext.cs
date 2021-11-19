@@ -12,10 +12,6 @@ namespace DuAnTotNghiep.Models
         {
         }
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionsBuilder)
-        //{
-        //}
-
         public DbSet<DonHang> DonHangs { get; set; }
 
         public DbSet<DonHangChiTiet> DonHangChiTiets { get; set; }

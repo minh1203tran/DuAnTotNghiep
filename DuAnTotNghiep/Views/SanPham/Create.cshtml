@@ -4,19 +4,13 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Tạo sản phẩm</h1>
 
-<h4>SanPham</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="SanPhamId" class="control-label"></label>
-                <input asp-for="SanPhamId" class="form-control" />
-                <span asp-validation-for="SanPhamId" class="text-danger"></span>
-            </div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
@@ -29,13 +23,19 @@
             </div>
             <div class="form-group">
                 <label asp-for="PhanLoai" class="control-label"></label>
-                <input asp-for="PhanLoai" class="form-control" />
+                <select asp-for="PhanLoai" class="form-control" asp-items="Html.GetEnumSelectList<PhanLoai>()">
+                    <option value="0">Loại sản phẩm</option>
+                </select>
                 <span asp-validation-for="PhanLoai" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="display: none">
                 <label asp-for="HinhAnh" class="control-label"></label>
                 <input asp-for="HinhAnh" class="form-control" />
                 <span asp-validation-for="HinhAnh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageFile" class="control-label"></label>
+                <input asp-for="ImageFile" class="form-control" type="file" />
             </div>
             <div class="form-group">
                 <label asp-for="Mota" class="control-label"></label>
@@ -55,7 +55,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-primary">Danh sách sản phẩm</a>
 </div>
 
 @section Scripts {

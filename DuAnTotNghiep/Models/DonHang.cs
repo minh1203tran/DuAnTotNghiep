@@ -21,8 +21,10 @@ namespace DuAnTotNghiep.Models
     public class DonHang
     {
         [Key]
+        [Display(Name = "Mã đơn hàng")]
         public int DonHangId { get; set; }
 
+        [Display(Name = "Mã khách hàng")]
         [ForeignKey("KhachHang")]
         public int KhachHangId { get; set; }
 
@@ -42,6 +44,7 @@ namespace DuAnTotNghiep.Models
         [Column(TypeName = "nvarchar(250)")]
         public string GhiChu { get; set; }
 
+        [Display(Name = "Khách hàng")]
         public KhachHang KhachHang { get; set; }
 
         public List<DonHangChiTiet> DonHangChiTiets { get; set; }

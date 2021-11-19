@@ -11,6 +11,7 @@ namespace DuAnTotNghiep.Models
     public class KhachHang
     {
         [Key]
+        [Display(Name = "Mã khách hàng")]
         public int KhachHangId { get; set; }
 
         [StringLength(50)]
@@ -27,10 +28,10 @@ namespace DuAnTotNghiep.Models
         [Column(TypeName = "varchar(10)")]
         [RegularExpression(@"^\(?([0-9]{3})[-. ]?([0-9]{4})[-. ]?([0-9]{3})$", ErrorMessage = "Số điện thoại của bạn không đúng.")]
         [Display(Name = "Số điện thoại")]
-        public string PhoneName { get; set; }
+        public string Phone { get; set; }
 
         [Required(ErrorMessage = "Bạn phải nhập địa chỉ email.")]
-        [Column(TypeName = "nvarchar(100)"), StringLength(100)]
+        [Column(TypeName = "varchar(100)"), StringLength(100)]
         [Display(Name = "Email")]
         [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "Email không được bỏ trống.")]
         public string EmailAddress { get; set; }

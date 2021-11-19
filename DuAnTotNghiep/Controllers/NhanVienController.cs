@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using PagedList;
 
 namespace DuAnTotNghiep.Controllers
 {
@@ -24,6 +25,12 @@ namespace DuAnTotNghiep.Controllers
         }
 
         // GET: NhanVienController
+        //public ActionResult Index(int page = 1, int pageSize = 10)
+        //{
+        //    var nhanvien = new NhanVien();
+        //    var model = _nhanvienservice.ListPaging(page, pageSize);
+        //    return View(_nhanvienservice.GetNhanVienAll());
+        //}
         public ActionResult Index()
         {
             return View(_nhanvienservice.GetNhanVienAll());
@@ -74,6 +81,9 @@ namespace DuAnTotNghiep.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    var _nhanvien = _nhanvienservice.GetNhanVien(id);
+                    nhanvien.PassWord = _nhanvien.PassWord;
+                    nhanvien.ConfirmPassWord = _nhanvien.PassWord;
                     _nhanvienservice.EditNhanVien(id, nhanvien);
                 }
                 return RedirectToAction(nameof(Details), new { id = nhanvien.NhanVienId });

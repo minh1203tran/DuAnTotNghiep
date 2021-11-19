@@ -1,5 +1,176 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using DuAnTotNghiep.Models;
+@using Microsoft.AspNetCore.Http;
+@using Microsoft.AspNetCore.Http.Extensions;
+@using DuAnTotNghiep.Constant;
+@model IEnumerable<DuAnTotNghiep.Models.ViewCart>;
+@{ string emailaddress = Context.Session.GetString(SessionKey.KhachHang.KH_Email); }
+@{ string fullname = Context.Session.GetString(SessionKey.KhachHang.KH_FullName); }
+
 @{
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+
+<h1>Cart</h1>
+<table class="table">
+    <tr>
+        <th>STT</th>
+        <th>Tên sản phẩm</th>
+        <th>Hình ảnh</th>
+        <th>Số lượng</th>
+        <th>Giá</th>
+        <th>Thành tiền</th>
+        <th></th>
+    </tr>
+    @{
+        int stt = 0;
+        double total = 0;
+        foreach (var item in Model)
+        {
+            int id = item.SanPham.SanPhamId;
+            string txt_Id = "txtQuantity_" + id;
+            stt++;
+            double totalSub = item.SanPham.Gia * item.Quantity;
+            total += totalSub;
+        <tr id="tr_@id">
+            <td>@stt</td>
+            <td>@item.SanPham.Name</td>
+            <td><img src="~/Images/hinhanh/@item.SanPham.HinhAnh" style="width: 150px;" /></td>
+            <td><input type="number" id="@txt_Id" value="@item.Quantity" onchange="() => javascript:updateCart(@id);"/></td>
+            <td><span id="tdGia_@id">@item.SanPham.Gia</span> VNĐ</td>
+            <td><span id="tdTien_@id">@totalSub</span> VNĐ</td>
+            <td>
+                <a href="javascript:updateCart(@id);" class="btn btn-primary">Cập nhật</a>
+                <a href="javascript:deleteCart(@id);" class="btn btn-primary">Xóa</a>
+            </td>
+        </tr>
+        }
+
+
+    }
+</table>
+@if (total == 0)
+{
+    <p><div>Tổng tiền: 0 VNĐ</div></p>
+}
+else
+{
+    <p><div>Tổng tiền: <span id="spTotal">@total</span> VNĐ</div></p>
+}
+
+<p>
+    @if (emailaddress != null && emailaddress != "")
+    {
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+            Đặt hàng
+        </button>
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Thông báo</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Đặt hàng thành công
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+                        <a class="addProduct btn btn-primary" href="javascript:orderCart(true);">OK</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+            Đặt hàng
+        </button>
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Thông báo</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Bạn cần phải đăng nhập để đặt hàng.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</p>
+<script>
+    function updateCart(id) {
+        var soluong = $("#txtQuantity_" + id).val();
+        var gia = $("#tdGia_" + id).html();
+        if (soluong > 0) {
+            var thanhtien = soluong * gia;
+        }
+        $("#tdTien_" + id).html(thanhtien);
+        $.ajax({
+            type: "POST",
+            url: "/Home/UpdateCart",
+            data: {
+                id: id,
+                soluong: soluong
+            },
+            success: function (result) {
+                $("#spTotal").html(result);
+                if (result == "0") {
+                    $("#imgCart").attr("src", "/Images/cart.png");
+                }
+            }
+        });
+    }
+
+    function deleteCart(id) {
+        $.ajax({
+            type: "POST",
+            url: "/Home/DeleteCart",
+            data: {
+                id: id,
+            },
+            success: function (result) {
+                $("#tr_" + id).hide();
+                $("#spTotal").html(result);
+                if (result == "0") {
+                    $("#imgCart").attr("src", "/Images/cart.png");
+                    clearCart();
+                }
+            }
+        });
+    }
+
+    function clearCart() {
+        $("#imgCart").attr("src", '/Images/cart.png');
+    }
+
+    function orderCart(flagLogin) {
+        if (!flagLogin) {
+            return false;
+        }
+        $.ajax({
+            type: "POST",
+            url: "/Home/OrderCart",
+            data: {},
+            success: function (result) {
+                window.location = "/Home/History";
+            }
+        });
+    }
+</script>
+<div>
+    <a asp-action="Index" class=" btn btn-primary">Trở về Menu</a>
+</div>
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

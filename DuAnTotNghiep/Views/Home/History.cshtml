@@ -1,23 +1,15 @@
 ﻿@model IEnumerable<DuAnTotNghiep.Models.DonHang>
 
 @{
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
     ViewData["Title"] = "History";
 }
 
-<h1>History</h1>
+<h1>Đơn hàng</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.DonHangId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.KhachHangId)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.NgayDat)
             </th>
@@ -28,7 +20,7 @@
                 @Html.DisplayNameFor(model => model.TrangThaiDonHang)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.GhiChu)
+                @Html.DisplayNameFor(model => model.KhachHang)
             </th>
             <th></th>
         </tr>
@@ -36,12 +28,6 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DonHangId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.KhachHangId)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NgayDat)
             </td>
@@ -52,14 +38,13 @@
                 @Html.DisplayFor(modelItem => item.TrangThaiDonHang)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.GhiChu)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.DisplayFor(modelItem => item.KhachHang.FullName) - 
+                @Html.DisplayFor(modelItem => item.KhachHang.EmailAddress)
             </td>
         </tr>
 }
     </tbody>
 </table>
+<div>
+    <a asp-action="Index" class="btn btn-primary">Trở về Menu</a>
+</div>

@@ -81,6 +81,7 @@ namespace DuAnTotNghiep.Controllers
             return Ok();
         }
 
+        //Giỏ hàng
         public IActionResult Cart()
         {
             List<ViewCart> viewcart = new List<ViewCart>();
@@ -140,7 +141,7 @@ namespace DuAnTotNghiep.Controllers
         public IActionResult OrderCart()
         {
             string kh_email = HttpContext.Session.GetString(SessionKey.KhachHang.KH_FullName);
-            if (kh_email != null && kh_email == "")
+            if (kh_email == null && kh_email == "")
             {
                 return BadRequest();
             }
@@ -203,7 +204,7 @@ namespace DuAnTotNghiep.Controllers
                 return RedirectToAction("Index", "Home");
             }
             #region
-            ViewLogin login = new ViewLogin();
+            ViewWebLogin login = new ViewWebLogin();
             login.ReturnUrl = returnurl;
             return View(login);
             #endregion
@@ -211,11 +212,11 @@ namespace DuAnTotNghiep.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Login(ViewWebLogin viewweblogin)
+        public IActionResult Login(ViewWebLogin viewWebLogin)
         {
             if (ModelState.IsValid)
             {
-                KhachHang khachhang = _Khachhangservice.Login(viewweblogin);
+                KhachHang khachhang = _Khachhangservice.Login(viewWebLogin);
                 if (khachhang != null)
                 {
                     HttpContext.Session.SetString(SessionKey.KhachHang.KH_Email, khachhang.EmailAddress);
@@ -224,7 +225,7 @@ namespace DuAnTotNghiep.Controllers
                     return RedirectToAction(nameof(HomeController.Index), "Home");
                 }
             }
-            return View(viewweblogin);
+            return View(viewWebLogin);
         }
 
         [HttpPost]
@@ -307,6 +308,16 @@ namespace DuAnTotNghiep.Controllers
                 return RedirectToAction("Index", "Home");
             }
             return View(_donhangservice.GetDonHangbyKhachHang(id));
+        }
+
+        public ActionResult GioiThieu()
+        {
+            return View();
+        }
+
+        public ActionResult LienHe()
+        {
+            return View();
         }
     }
 }

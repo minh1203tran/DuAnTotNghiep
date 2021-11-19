@@ -20,6 +20,7 @@ namespace DuAnTotNghiep.Models
     public class SanPham
     {
         [Key]
+        [Display(Name = "Mã sản phẩm")]
         public int SanPhamId { get; set; }
 
         [StringLength(50)]

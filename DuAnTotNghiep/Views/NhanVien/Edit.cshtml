@@ -6,17 +6,12 @@
 
 <h1>Edit</h1>
 
-<h4>NhanVien</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="NhanVienId" class="control-label"></label>
-                <input asp-for="NhanVienId" class="form-control" />
-                <span asp-validation-for="NhanVienId" class="text-danger"></span>
-            </div>
+            <input type="hidden" asp-for="NhanVienId" />
             <div class="form-group">
                 <label asp-for="UserName" class="control-label"></label>
                 <input asp-for="UserName" class="form-control" />
@@ -42,26 +37,26 @@
                 <input asp-for="NgaySinh" class="form-control" />
                 <span asp-validation-for="NgaySinh" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Admin" /> @Html.DisplayNameFor(model => model.Admin)
-                </label>
-            </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Role" /> @Html.DisplayNameFor(model => model.Role)
+                    </label>
+                </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="SuDung" /> @Html.DisplayNameFor(model => model.SuDung)
                 </label>
             </div>
-            <div class="form-group">
-                <label asp-for="PassWord" class="control-label"></label>
-                <input asp-for="PassWord" class="form-control" />
-                <span asp-validation-for="PassWord" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ConfirmPassWord" class="control-label"></label>
-                <input asp-for="ConfirmPassWord" class="form-control" />
-                <span asp-validation-for="ConfirmPassWord" class="text-danger"></span>
-            </div>
+            @*<div class="form-group">
+            <label asp-for="PassWord" class="control-label"></label>
+            <input asp-for="PassWord" class="form-control" />
+            <span asp-validation-for="PassWord" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ConfirmPassWord" class="control-label"></label>
+            <input asp-for="ConfirmPassWord" class="form-control" />
+            <span asp-validation-for="ConfirmPassWord" class="text-danger"></span>
+        </div>*@
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
@@ -70,7 +65,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-primary">Danh sách nhân viên</a>
 </div>
 
 @section Scripts {
