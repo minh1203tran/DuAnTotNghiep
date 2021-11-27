@@ -172,3 +172,13 @@ D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\obj\Debug\net5.0\Razor\Vi
 D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\bin\Debug\net5.0\PagedList.dll
 D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\bin\Debug\net5.0\PagedList.Mvc.dll
 D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\obj\Debug\net5.0\Razor\Views\Home\GioiThieu.cshtml.g.cs
+D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\obj\Debug\net5.0\Razor\Views\Home\ProductDetails.cshtml.g.cs
+D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\bin\Debug\net5.0\System.Web.Mvc.dll
+D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\bin\Debug\net5.0\System.Web.Razor.dll
+D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\bin\Debug\net5.0\System.Web.Helpers.dll
+D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\bin\Debug\net5.0\System.Web.WebPages.Deployment.dll
+D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\bin\Debug\net5.0\System.Web.WebPages.Razor.dll
+D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\bin\Debug\net5.0\System.Web.WebPages.dll
+D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\bin\Debug\net5.0\Microsoft.Web.Infrastructure.dll
+D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\bin\Debug\net5.0\X.PagedList.Mvc.dll
+D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\obj\Debug\net5.0\Razor\Views\Home\ChiTietDonHang.cshtml.g.cs

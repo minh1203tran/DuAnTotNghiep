@@ -6,34 +6,46 @@
 @{
     ViewData["Title"] = "Index";
 }
+
+<div style="text-align: center;">
+    @using (Html.BeginForm("Index", "NhanVien", FormMethod.Get))
+    {
+        <b> Tìm kiếm theo: &nbsp; </b>@Html.RadioButton("seachBy", "UserName")<text>Tài khoản &nbsp;&nbsp;</text>
+        @Html.RadioButton("seachBy", "FullName")<text>Họ và tên &nbsp; &nbsp;</text>
+        @Html.RadioButton("seachBy", "Email")<text>Email</text><br /><br />
+        @Html.TextBox("search")<input type="submit" value="Tìm kiếm" name="submit" />
+    }
+</div>
+
 @if (role == "True")
 {
-    <a asp-action="Create" class="btn btn-primary">Tạo nhân viên</a>
+    <a asp-action="Create" class="btn btn-danger"><i class="fas fa-plus"></i></a>
 }
-<br /><br />
+<br />
+<br />
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.UserName)
+                @Html.DisplayNameFor(model => model.First().UserName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FullName)
+                @Html.DisplayNameFor(model => model.First().FullName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                @Html.DisplayNameFor(model => model.First().Email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TenChucVu)
+                @Html.DisplayNameFor(model => model.First().TenChucVu)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NgaySinh)
+                @Html.DisplayNameFor(model => model.First().NgaySinh)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Role)
+                @Html.DisplayNameFor(model => model.First().Role)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SuDung)
+                @Html.DisplayNameFor(model => model.First().TrangThai)
             </th>
             <th></th>
         </tr>
@@ -58,28 +70,33 @@
                     @Html.DisplayFor(modelItem => item.NgaySinh)
                 </td>
                 <td>
-                    @*@Html.DisplayFor(modelItem => item.Role)*@
-                    @if (item.Role)
-                    {
-                        <span>Quan tri vien</span>
-                    }
-                    else
-                    {
-                        <span>Nhan vien</span>
-                    }
+                    @Html.DisplayFor(modelItem => item.Role)
+                    @*@if (item.Role)
+                        {
+                            <span>Quản trị viên</span>
+                        }
+                        else
+                        {
+                            <span>Nhân viên</span>
+                        }*@
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.SuDung)
+                    @Html.DisplayFor(modelItem => item.TrangThai)
                 </td>
                 <td>
                     @if (role == "True")
                     {
                         <a asp-action="Edit" asp-route-id="@item.NhanVienId" class="btn btn-primary">Sửa</a>
                     }
-                    <a asp-action="Details" asp-route-id="@item.NhanVienId" class="btn btn-primary">Chi tiết</a>
+                    <a asp-action="Details" asp-route-id="@item.NhanVienId" class="btn btn-danger" style="width: 43px;"><i class="fas fa-info"></i></a>
                 </td>
             </tr>
         }
     </tbody>
+    @if (Model.Count() == 0)
+    {
+        <tr>
+            <td colspan="3">Không tìm thấy nhân viên!</td>
+        </tr>
+    }
 </table>
-

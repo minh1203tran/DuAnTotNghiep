@@ -63,7 +63,7 @@ namespace DuAnTotNghiep.Service
                 _nhanvien.NgaySinh = nhanvien.NgaySinh;
                 _nhanvien.Email = nhanvien.Email;
                 _nhanvien.Role = nhanvien.Role;
-                _nhanvien.SuDung = nhanvien.SuDung;
+                _nhanvien.TrangThai = nhanvien.TrangThai;
                 if (_nhanvien.PassWord != null)
                 {
                     if(_nhanvien.PassWord == nhanvien.PassWord)

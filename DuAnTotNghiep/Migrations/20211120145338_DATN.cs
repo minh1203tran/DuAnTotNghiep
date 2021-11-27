@@ -37,7 +37,7 @@ namespace DuAnTotNghiep.Migrations
                     TenChucVu = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     NgaySinh = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Role = table.Column<bool>(type: "bit", nullable: false),
-                    SuDung = table.Column<bool>(type: "bit", nullable: false),
+                    TrangThai = table.Column<bool>(type: "bit", nullable: false),
                     PassWord = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
                 },
                 constraints: table =>

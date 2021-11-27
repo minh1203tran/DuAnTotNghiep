@@ -11,10 +11,12 @@ namespace DuAnTotNghiep.Controllers
     public class DonHangController : BaseController
     {
         private IDonHangService _donhangservice;
+        private DataContext _dataContext;
 
-        public DonHangController(IDonHangService donhangservice)
+        public DonHangController(IDonHangService donhangservice, DataContext dataContext)
         {
             _donhangservice = donhangservice;
+            _dataContext = dataContext;
         }
 
         // GET: DonhangController

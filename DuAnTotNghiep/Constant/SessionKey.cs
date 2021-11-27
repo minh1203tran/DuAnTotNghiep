@@ -20,6 +20,7 @@ namespace DuAnTotNghiep.Constant
         {
             public const string KH_Email = "KH_Email";
             public const string KH_FullName = "KH_FullName";
+            public const string KH_Id = "KH_Id";
             public const string KhachHangContext = "KhachHangContext";
         }
     }

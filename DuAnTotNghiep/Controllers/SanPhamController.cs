@@ -18,18 +18,20 @@ namespace DuAnTotNghiep.Controllers
         private readonly IWebHostEnvironment _webhostenvironment;
         private ISanPhamService _sanphamservice;
         private IUploadHelper _uploadhelper;
+        private DataContext _dataContext;
 
-        public SanPhamController(IWebHostEnvironment webhostenvironment, ISanPhamService sanphamservice,IUploadHelper uploadhelper)
+        public SanPhamController(IWebHostEnvironment webhostenvironment, ISanPhamService sanphamservice,IUploadHelper uploadhelper, DataContext dataContext)
         {
             _webhostenvironment = webhostenvironment;
             _sanphamservice = sanphamservice;
             _uploadhelper = uploadhelper;
+            _dataContext = dataContext;
         }
 
         // GET: SanPhamController
-        public ActionResult Index()
+        public ActionResult Index(string search)
         {
-            return View(_sanphamservice.GetSanPhamAll());
+            return View(_dataContext.SanPhams.Where(s => s.Name.Contains(search) || search == null));
         }
 
         // GET: SanPhamController/Details/5

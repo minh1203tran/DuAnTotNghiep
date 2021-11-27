@@ -4,7 +4,7 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Sửa nhân viên</h1>
 
 <hr />
 <div class="row">
@@ -44,28 +44,15 @@
                 </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="SuDung" /> @Html.DisplayNameFor(model => model.SuDung)
+                    <input class="form-check-input" asp-for="TrangThai" /> @Html.DisplayNameFor(model => model.TrangThai)
                 </label>
             </div>
-            @*<div class="form-group">
-            <label asp-for="PassWord" class="control-label"></label>
-            <input asp-for="PassWord" class="form-control" />
-            <span asp-validation-for="PassWord" class="text-danger"></span>
-        </div>
         <div class="form-group">
-            <label asp-for="ConfirmPassWord" class="control-label"></label>
-            <input asp-for="ConfirmPassWord" class="form-control" />
-            <span asp-validation-for="ConfirmPassWord" class="text-danger"></span>
-        </div>*@
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
+            <input type="submit" value="Lưu" class="btn btn-primary" />
+            <a asp-action="Index" class="btn btn-primary">Danh sách nhân viên</a>
+        </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index" class="btn btn-primary">Danh sách nhân viên</a>
 </div>
 
 @section Scripts {

@@ -17,7 +17,7 @@ namespace DuAnTotNghiep.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        //private readonly ILogger<HomeController> _logger;
         private readonly IWebHostEnvironment _webhostenvironment;
         private ISanPhamService _sanphamservice;
         private IKhachHangService _Khachhangservice;
@@ -221,6 +221,7 @@ namespace DuAnTotNghiep.Controllers
                 {
                     HttpContext.Session.SetString(SessionKey.KhachHang.KH_Email, khachhang.EmailAddress);
                     HttpContext.Session.SetString(SessionKey.KhachHang.KH_FullName, khachhang.FullName);
+                    HttpContext.Session.SetString(SessionKey.KhachHang.KH_Id, khachhang.KhachHangId.ToString());
                     HttpContext.Session.SetString(SessionKey.KhachHang.KhachHangContext, JsonConvert.SerializeObject(khachhang));
                     return RedirectToAction(nameof(HomeController.Index), "Home");
                 }
@@ -234,6 +235,7 @@ namespace DuAnTotNghiep.Controllers
         {
             HttpContext.Session.Remove(SessionKey.KhachHang.KH_Email);
             HttpContext.Session.Remove(SessionKey.KhachHang.KH_FullName);
+            HttpContext.Session.Remove(SessionKey.KhachHang.KH_Id);
             HttpContext.Session.Remove(SessionKey.KhachHang.KhachHangContext);
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
@@ -259,16 +261,17 @@ namespace DuAnTotNghiep.Controllers
         }
 
         [AuthenticationFilterAttibute_KH]
-        public ActionResult Info()
+        public ActionResult Info(int id)
         {
             string kh_email = HttpContext.Session.GetString(SessionKey.KhachHang.KH_FullName);
             if (kh_email == null && kh_email == "")
             {
                 return RedirectToAction("Index", "Home");
             }
-            var khachhangcontext = HttpContext.Session.GetString(SessionKey.KhachHang.KhachHangContext);
-            var khachhangid = JsonConvert.DeserializeObject<KhachHang>(khachhangcontext).KhachHangId;
-            var khachhang = _Khachhangservice.GetKhachHang(khachhangid);
+            //var khachhangcontext = HttpContext.Session.GetString(SessionKey.KhachHang.KhachHangContext);
+            //var khachhangid = JsonConvert.DeserializeObject<KhachHang>(khachhangcontext).KhachHangId;
+            //id = khachhangid;
+            var khachhang = _Khachhangservice.GetKhachHang(id);
             return View(khachhang);
         }
 
@@ -279,14 +282,18 @@ namespace DuAnTotNghiep.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
-                {
-                    _Khachhangservice.EditKhachHang(id, khachhang);
+                //if (ModelState.IsValid)
+                //{
+                var _khachhang = _Khachhangservice.GetKhachHang(id);
+                khachhang.PassWord = _khachhang.PassWord;
+                khachhang.ConfirmPassWord = _khachhang.PassWord;
+                _Khachhangservice.EditKhachHang(id, khachhang);
                     return RedirectToAction(nameof(Index), new { id = khachhang.KhachHangId });
-                }
+                //}
             }
-            catch
+            catch(Exception ex)
             {
+                Console.WriteLine(ex.Message);
             }
             return RedirectToAction(nameof(Index));
         }
@@ -318,6 +325,38 @@ namespace DuAnTotNghiep.Controllers
         public ActionResult LienHe()
         {
             return View();
+        }
+
+        // GET: KhachHangController/Edit/5
+        public ActionResult Edit(int id)
+        {
+            var khachhang = _Khachhangservice.GetKhachHang(id);
+            return View(khachhang);
+        }
+
+        // POST: KhachHangController/Edit/5
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, KhachHang khachHang)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _Khachhangservice.EditKhachHang(id, khachHang);
+                }
+                return RedirectToAction(nameof(Info), new { id = khachHang.KhachHangId });
+            }
+            catch
+            {
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
+        // GET: HomeController/Details/5
+        public ActionResult ChiTietDonHang(int id)
+        {
+            return View(_donhangservice.GetDonHang(id));
         }
     }
 }

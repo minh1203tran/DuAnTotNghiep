@@ -43,7 +43,7 @@
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="SuDung" /> @Html.DisplayNameFor(model => model.SuDung)
+                    <input class="form-check-input" asp-for="TrangThai" /> @Html.DisplayNameFor(model => model.TrangThai)
                 </label>
             </div>
             <div class="form-group">
@@ -58,13 +58,10 @@
             </div>
             <div class="form-group">
                 <input type="submit" value="Lưu" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-primary">Danh sách nhân viên</a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index" class="btn btn-primary">Danh sách nhân viên</a>
 </div>
 
 @section Scripts {

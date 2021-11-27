@@ -3,7 +3,7 @@
 @{
     Layout = "~/Views/Shared/_WebLayout.cshtml";
 }
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.455226329226!2d106.62735611432105!3d10.85293909226965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529b6a2b351a5%3A0x11690ada8c36f9bc!2zVHLGsOG7nW5nIENhbyDEkeG6s25nIFRo4buxYyBow6BuaCBGUFQgUG9seXRlY2huaWMgVFAuSENNIChDUzMp!5e0!3m2!1svi!2s!4v1636991212390!5m2!1svi!2s" width="1110" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.455226329226!2d106.62735611432105!3d10.85293909226965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529b6a2b351a5%3A0x11690ada8c36f9bc!2zVHLGsOG7nW5nIENhbyDEkeG6s25nIFRo4buxYyBow6BuaCBGUFQgUG9seXRlY2huaWMgVFAuSENNIChDUzMp!5e0!3m2!1svi!2s!4v1636991212390!5m2!1svi!2s" width="1320" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 <h3>VỀ CHÚNG TÔI</h3>
 <div class="media">
     <img class="align-self-center mr-3" src="~/Images/ve_chung_toi.jpg" alt="Generic placeholder image" style="width: 200px;">
@@ -121,13 +121,11 @@
             </div>
             <div class="col-md-4 col-xl-3">
                 <br />
-                <h5>Links</h5>
+                <h5>Liên kế</h5>
                 <ul class="nav-list">
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Projects</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contacts</a></li>
-                    <li><a href="#">Pricing</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Trang chủ</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="GioiThieu">Giới thiệu</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="LienHe">Liên hệ</a></li>
                 </ul>
             </div>
         </div>

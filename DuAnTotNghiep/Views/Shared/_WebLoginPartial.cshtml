@@ -1,10 +1,23 @@
 ﻿@using DuAnTotNghiep.Constant;
 @using Microsoft.AspNetCore.Http.Extensions;
 @using Microsoft.AspNetCore.Http;
+@using Newtonsoft.Json;
 @using DuAnTotNghiep.Models;
+@inject DuAnTotNghiep.Interface.IKhachHangService _khachHangService;
 @{ string emailAddress = Context.Session.GetString(SessionKey.KhachHang.KH_Email); }
-@{ string fullName = Context.Session.GetString(SessionKey.KhachHang.KH_FullName); }
+@{ string khachhangid = Context.Session.GetString(SessionKey.KhachHang.KH_Id);
+}
+@{
+    string fullName = "";
+    if (khachhangid != null && khachhangid != "")
+    {
+        var customer = _khachHangService.GetKhachHang(int.Parse(khachhangid));
+        fullName = customer.FullName;
+    }
+}
 @{ string cart = Context.Session.GetString("cart"); }
+@{ string role = Context.Session.GetString(SessionKey.NhanVien.Role); }
+
 <ul class="navbar-nav">
     <li class="nav-item">
         <a class="nav-link text-dark" id="cart" href="/Home/Cart">
@@ -21,7 +34,7 @@
     @if (emailAddress != null && emailAddress != "")
     {
         <li class="nav-item">
-            <a class="nav-link text-dark" id="infomation" href="/Home/Info">Chào @fullName</a>
+            <a class="nav-link text-dark" id="infomation" href="/Home/Info/@khachhangid">Chào @fullName</a>
         </li>
         <li class="nav-item">
             <a class="nav-link text-dark btn btn-warning mr-2" id="history" href="/Home/History">Đơn hàng</a>

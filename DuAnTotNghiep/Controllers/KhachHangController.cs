@@ -1,4 +1,5 @@
 ﻿using DuAnTotNghiep.Interface;
+using DuAnTotNghiep.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,16 +12,29 @@ namespace DuAnTotNghiep.Controllers
     public class KhachHangController : BaseController
     {
         private IKhachHangService _khachhangservice;
+        private DataContext _dataContext;
 
-        public KhachHangController(IKhachHangService khachhangservice)
+        public KhachHangController(IKhachHangService khachhangservice, DataContext dataContext)
         {
             _khachhangservice = khachhangservice;
+            _dataContext = dataContext;
         }
 
         // GET: KhachHangController
-        public ActionResult Index()
+        public ActionResult Index(string seachBy, string search)
         {
-            return View(_khachhangservice.GetKhachHangAll());
+            if (seachBy == "FullName")
+            {
+                return View(_dataContext.KhachHangs.Where(s => s.FullName.Contains(search) || search == null));
+            }
+            else if (seachBy == "EmailAddress")
+            {
+                return View(_dataContext.KhachHangs.Where(s => s.EmailAddress.Contains(search) || search == null));
+            }
+            else
+            {
+                return View(_dataContext.KhachHangs.Where(s => s.Phone == search || search == null));
+            }
         }
 
         // GET: KhachHangController/Details/5

@@ -82,6 +82,9 @@ else
                 </div>
             </div>
         </div>
+        <div>
+            <a asp-action="Index" class=" btn btn-primary">Trở về trang chủ</a>
+        </div>
     }
     else
     {
@@ -105,6 +108,9 @@ else
                     </div>
                 </div>
             </div>
+        </div>
+        <div>
+            <a asp-action="Index" class=" btn btn-primary">Trở về trang chủ</a>
         </div>
     }
 </p>
@@ -168,9 +174,9 @@ else
         });
     }
 </script>
-<div>
-    <a asp-action="Index" class=" btn btn-primary">Trở về Menu</a>
-</div>
+@*<div>
+    <a asp-action="Index" class=" btn btn-primary">Trở về trang chủ</a>
+</div>*@
 @section Scripts{
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

@@ -8,6 +8,15 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.KhachHang.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KhachHang.EmailAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KhachHang.Phone)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.NgayDat)
             </th>
             <th>
@@ -23,6 +32,15 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.KhachHang.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KhachHang.EmailAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KhachHang.Phone)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.NgayDat)
             </td>
             <td>
@@ -32,7 +50,7 @@
                 @Html.DisplayFor(modelItem => item.TrangThaiDonHang)
             </td>
             <td>
-                <a asp-action="Details" asp-route-id="@item.DonHangId" class="btn btn-primary">Chi tiết</a>
+                <a asp-action="Details" asp-route-id="@item.DonHangId" class="btn btn-danger" style="width: 43px;"><i class="fas fa-info"></i></a>
             </td>
         </tr>
 }

@@ -146,12 +146,12 @@ namespace DuAnTotNghiep.Migrations
                     b.Property<bool>("Role")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("SuDung")
-                        .HasColumnType("bit");
-
                     b.Property<string>("TenChucVu")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("TrangThai")
+                        .HasColumnType("bit");
 
                     b.Property<string>("UserName")
                         .IsRequired()

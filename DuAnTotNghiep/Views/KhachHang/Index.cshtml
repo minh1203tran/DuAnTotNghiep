@@ -4,6 +4,17 @@
     ViewData["Title"] = "Index";
 }
 
+<div style="text-align: center;">
+    @using (Html.BeginForm("Index", "KhachHang", FormMethod.Get))
+    {
+        <b> Tìm kiếm theo: &nbsp; </b>@Html.RadioButton("seachBy", "FullName")<text>Họ và tên &nbsp;&nbsp;</text>
+                                      @Html.RadioButton("seachBy", "EmailAddress")<text>Email &nbsp; &nbsp;</text>
+                                      @Html.RadioButton("seachBy", "Phone")<text>Số điện thoại</text><br /><br />
+                                      @Html.TextBox("search")<input type="submit" value="Tìm kiếm" name="submit" />
+    }
+</div>
+<br />
+
 <table class="table">
     <thead>
         <tr>
@@ -23,24 +34,31 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NgaySinh)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmailAddress)
-            </td>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.KhachHangId" class="btn btn-primary">Chi tiết</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgaySinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmailAddress)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.KhachHangId" class="btn btn-danger" style="width: 43px;"><i class="fas fa-info"></i></a>
+                </td>
+            </tr>
+        }
     </tbody>
+    @if (Model.Count() == 0)
+    {
+        <tr>
+            <td colspan="3">Không tìm thấy khách hàng!</td>
+        </tr>
+    }
 </table>

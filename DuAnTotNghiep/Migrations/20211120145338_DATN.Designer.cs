@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DuAnTotNghiep.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20211114100403_DATN")]
+    [Migration("20211120145338_DATN")]
     partial class DATN
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -148,12 +148,12 @@ namespace DuAnTotNghiep.Migrations
                     b.Property<bool>("Role")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("SuDung")
-                        .HasColumnType("bit");
-
                     b.Property<string>("TenChucVu")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("TrangThai")
+                        .HasColumnType("bit");
 
                     b.Property<string>("UserName")
                         .IsRequired()

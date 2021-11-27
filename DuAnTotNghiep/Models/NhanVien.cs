@@ -39,8 +39,8 @@ namespace DuAnTotNghiep.Models
         [Display(Name = "Quản trị")]
         public bool Role { get; set; }
 
-        [Display(Name = "Sử dụng")]
-        public bool SuDung { get; set; }
+        [Display(Name = "Trạng thái")]
+        public bool TrangThai { get; set; }
 
         [Display(Name = "Mật khẩu")]
         [Column(TypeName = "varchar(50)"), StringLength(50)]

@@ -1,4 +1,7 @@
 ﻿@model DuAnTotNghiep.Models.NhanVien
+@using Microsoft.AspNetCore.Http;
+@using DuAnTotNghiep.Constant;
+@{ string role = Context.Session.GetString(SessionKey.NhanVien.Role); }
 
 @{
     ViewData["Title"] = "Details";
@@ -52,14 +55,17 @@
             @Html.DisplayFor(model => model.Role)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.SuDung)
+            @Html.DisplayNameFor(model => model.TrangThai)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.SuDung)
+            @Html.DisplayFor(model => model.TrangThai)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.NhanVienId" class="btn btn-primary">Sửa</a>
+    @if (role == "True")
+    {
+        <a asp-action="Edit" asp-route-id="@Model.NhanVienId" class="btn btn-primary">Sửa</a>
+    }
     <a asp-action="Index" class="btn btn-primary">Danh sách nhân viên</a>
 </div>

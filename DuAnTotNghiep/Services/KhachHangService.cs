@@ -63,9 +63,17 @@ namespace DuAnTotNghiep.Service
                 _khachhang.EmailAddress = khachhang.EmailAddress;
                 if (_khachhang.PassWord != null)
                 {
-                    khachhang.PassWord = _mahoahelper.MaHoa(khachhang.PassWord);
-                    _khachhang.PassWord = khachhang.PassWord;
-                    _khachhang.ConfirmPassWord = khachhang.PassWord;
+                    if (_khachhang.PassWord == khachhang.PassWord)
+                    {
+                        _khachhang.PassWord = khachhang.PassWord;
+                        _khachhang.ConfirmPassWord = khachhang.PassWord;
+                    }
+                    else
+                    {
+                        khachhang.PassWord = _mahoahelper.MaHoa(khachhang.PassWord);
+                        _khachhang.PassWord = khachhang.PassWord;
+                        _khachhang.ConfirmPassWord = khachhang.PassWord;
+                    }                    
                 }
                 _datacontext.Update(_khachhang);
                 _datacontext.SaveChanges();

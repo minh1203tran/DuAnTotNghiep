@@ -41,10 +41,13 @@
                 @Html.DisplayFor(modelItem => item.KhachHang.FullName) - 
                 @Html.DisplayFor(modelItem => item.KhachHang.EmailAddress)
             </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.DonHangId" class="btn btn-primary">Chi tiết</a>
+            </td>
         </tr>
 }
     </tbody>
 </table>
 <div>
-    <a asp-action="Index" class="btn btn-primary">Trở về Menu</a>
+    <a asp-action="Index" class="btn btn-primary">Trở về trang chủ</a>
 </div>
