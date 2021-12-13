@@ -1,0 +1,121 @@
+﻿@model DuAnTotNghiep.Models.SanPham
+@{
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+
+<style>
+    body {
+        background-color: #f5f5f5;
+        padding-top: 25px;
+        font-family: 'Open sans', Arial, sans-serif;
+    }
+
+    .store-body {
+        display: flex;
+        flex-direction: row;
+        padding: 0;
+    }
+
+        .store-body .product-info {
+            width: 60%;
+            border-right: 1px solid rgba(0,0,0,.125);
+        }
+
+
+        .store-body .product-payment-details {
+            width: 40%;
+            padding: 15px 15px 0 15px;
+        }
+
+    .product-info .product-gallery {
+        display: flex;
+        flex-direction: row;
+        border-bottom: 1px solid rgba(0,0,0,.125);
+    }
+
+    .product-gallery-featured {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 15px 0;
+        cursor: zoom-in;
+    }
+</style>
+
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card mb-10">
+                    <div class="card-body store-body">
+                        @{
+                            int id = Model.SanPhamId;
+                            string txt_Id = "txtQuantity_" + id;
+
+                            <div class="product-info">
+                                <div class="product-gallery">
+                                    <div class="product-gallery-featured">
+                                        <img src="~/Images/hinhanh/@Model.HinhAnh" style="width: 450px" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-payment-details">
+                                <h3 class="product-title mb-2">@Model.Name</h3>
+                                <h6 class="product-mota mb-2">@Model.Mota</h6>
+                                <h3 style="float: left">@string.Format("{0:#,0}", @Model.Gia) VNĐ</h3>
+                                <label style="margin-right: 200px">Số lượng</label>
+                                <input type="number" name="quantity" min="1" id="@txt_Id" value="1" class="form-control mb-4 input-lg" onchange="javascript: updateCart(id)">
+                                <div>
+                                    <a asp-action="Index" style="color: black; font-size: 20px; height: 47px" class="btn btn-light"><i class="fas fa-angle-left"></i> Tiếp tục mua sắm</a>
+                                    <a class="btn btn-success btn-lg" style="float: right" href="javascript:AddCartDetails(@Model.SanPhamId );">
+                                        Mua hàng <img id="imgBusy_@Model.SanPhamId" src="~/Images/busy.gif" style="display: none" />
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    function AddCartDetails(id) {
+        var soluong = $("#txtQuantity_" + id).val();
+        $("#imgCart").attr("src", '/Images/cartB.png');
+        $("#imgBusy_" + id).show();
+        setTimeout(function () {
+            $.ajax({
+                url: "/Home/AddCartDetails",
+                type: "POST",
+                data: {
+                    id: id,
+                    soluong: soluong
+                },
+                success: function (result) { },
+                error: function (e) { }
+            });
+            $("#imgBusy_" + id).hide();
+        }, 500);
+    }
+
+    function updateCart(id) {
+        var soluong = $("#txtQuantity_" + id).val();
+        $.ajax({
+            type: "POST",
+            url: "/Home/UpdateCart",
+            data: {
+                id: id,
+                soluong: soluong
+            },
+            success: function (result) {
+                if (result == "0") {
+                    $("#imgCart").attr("src", "/Images/cart.png");
+                }
+            }
+        });
+    }
+</script>

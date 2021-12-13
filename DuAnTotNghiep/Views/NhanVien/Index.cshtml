@@ -19,7 +19,7 @@
 
 @if (role == "True")
 {
-    <a asp-action="Create" class="btn btn-danger"><i class="fas fa-plus"></i></a>
+    <a asp-action="Create" class="btn btn-success"><i class="fas fa-plus"></i></a>
 }
 <br />
 <br />
@@ -86,9 +86,9 @@
                 <td>
                     @if (role == "True")
                     {
-                        <a asp-action="Edit" asp-route-id="@item.NhanVienId" class="btn btn-primary">Sửa</a>
+                        <a asp-action="Edit" asp-route-id="@item.NhanVienId" class="btn btn-warning"><i class="far fa-edit"></i></a>
                     }
-                    <a asp-action="Details" asp-route-id="@item.NhanVienId" class="btn btn-danger" style="width: 43px;"><i class="fas fa-info"></i></a>
+                    <a asp-action="Details" asp-route-id="@item.NhanVienId" class="btn btn-success" style="width: 50px;"><i class="fas fa-info"></i></a>
                 </td>
             </tr>
         }

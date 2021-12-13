@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DuAnTotNghiep.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20211120145338_DATN")]
+    [Migration("20211202150153_DATN")]
     partial class DATN
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -180,8 +180,8 @@ namespace DuAnTotNghiep.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Mota")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
+                        .HasMaxLength(750)
+                        .HasColumnType("nvarchar(750)");
 
                     b.Property<string>("Name")
                         .IsRequired()

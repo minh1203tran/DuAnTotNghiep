@@ -45,9 +45,9 @@ namespace DuAnTotNghiep.Models
         [Display(Name = "Chọn hình")]
         public IFormFile ImageFile { get; set; }
 
-        [StringLength(250)]
+        [StringLength(750)]
         [Display(Name = "Mô tả")]
-        [Column(TypeName = "nvarchar(250)")]
+        [Column(TypeName = "nvarchar(750)")]
         public string Mota { get; set; }
 
         [Display(Name = " Đang phục vụ")]

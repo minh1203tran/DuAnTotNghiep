@@ -55,7 +55,7 @@ namespace DuAnTotNghiep.Migrations
                     Gia = table.Column<double>(type: "float", nullable: false),
                     PhanLoai = table.Column<int>(type: "int", nullable: false),
                     HinhAnh = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
-                    Mota = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+                    Mota = table.Column<string>(type: "nvarchar(750)", maxLength: 750, nullable: true),
                     TrangThai = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>

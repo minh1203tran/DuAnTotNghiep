@@ -23,20 +23,23 @@ namespace DuAnTotNghiep.Controllers
         private IKhachHangService _Khachhangservice;
         private IDonHangService _donhangservice;
         private IDonHangChiTietService _donhangchitietservice;
+        private DataContext _dataContext;
 
-        public HomeController(IWebHostEnvironment webhostenvironment, ISanPhamService sanphamservice, IKhachHangService khachhangservice, IDonHangService donhangservice, IDonHangChiTietService donhangchitietservice)
+        public HomeController(IWebHostEnvironment webhostenvironment, ISanPhamService sanphamservice, IKhachHangService khachhangservice, IDonHangService donhangservice, IDonHangChiTietService donhangchitietservice, DataContext dataContext)
         {
             _webhostenvironment = webhostenvironment;
             _sanphamservice = sanphamservice;
             _Khachhangservice = khachhangservice;
             _donhangservice = donhangservice;
             _donhangchitietservice = donhangchitietservice;
+            _dataContext = dataContext;
         }
 
         // GET: HomeController
-        public ActionResult Index()
+        public ActionResult Index(string search)
         {
-            return View(_sanphamservice.GetSanPhamAll());
+            return View(_dataContext.SanPhams.Where(s => s.Name.Contains(search) || search == null));
+            //return View(_sanphamservice.GetSanPhamAll());
         }
 
         public IActionResult AddCart(int id)
@@ -74,6 +77,49 @@ namespace DuAnTotNghiep.Controllers
                     {
                         SanPham = sanpham,
                         Quantity = 1
+                    });
+                }
+                HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(viewcart));
+            }
+            return Ok();
+        }
+
+        [HttpPost]
+        public IActionResult AddCartDetails(int id, int soluong)
+        {
+            var cart = HttpContext.Session.GetString("cart");
+            if (cart == null)
+            {
+                var sanpham = _sanphamservice.GetSanPham(id);
+                List<ViewCart> listcart = new List<ViewCart>()
+                {
+                    new ViewCart
+                    {
+                        SanPham = sanpham,
+                        Quantity = soluong
+                    }
+                };
+                HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(listcart));
+            }
+            else
+            {
+                List<ViewCart> viewcart = JsonConvert.DeserializeObject<List<ViewCart>>(cart);
+                bool check = true;
+                for (int i = 0; i < viewcart.Count; i++)
+                {
+                    if (viewcart[i].SanPham.SanPhamId == id)
+                    {
+                        viewcart[i].Quantity++;
+                        check = false;
+                    }
+                }
+                if (check)
+                {
+                    var sanpham = _sanphamservice.GetSanPham(id);
+                    viewcart.Add(new ViewCart
+                    {
+                        SanPham = sanpham,
+                        Quantity = soluong
                     });
                 }
                 HttpContext.Session.SetString("cart", JsonConvert.SerializeObject(viewcart));
@@ -268,9 +314,6 @@ namespace DuAnTotNghiep.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            //var khachhangcontext = HttpContext.Session.GetString(SessionKey.KhachHang.KhachHangContext);
-            //var khachhangid = JsonConvert.DeserializeObject<KhachHang>(khachhangcontext).KhachHangId;
-            //id = khachhangid;
             var khachhang = _Khachhangservice.GetKhachHang(id);
             return View(khachhang);
         }
@@ -282,26 +325,17 @@ namespace DuAnTotNghiep.Controllers
         {
             try
             {
-                //if (ModelState.IsValid)
-                //{
                 var _khachhang = _Khachhangservice.GetKhachHang(id);
                 khachhang.PassWord = _khachhang.PassWord;
                 khachhang.ConfirmPassWord = _khachhang.PassWord;
                 _Khachhangservice.EditKhachHang(id, khachhang);
-                    return RedirectToAction(nameof(Index), new { id = khachhang.KhachHangId });
-                //}
+                return RedirectToAction(nameof(Index), new { id = khachhang.KhachHangId });
             }
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
             return RedirectToAction(nameof(Index));
-        }
-
-        [AuthenticationFilterAttibute_KH]
-        public ActionResult Details(int id)
-        {
-            return View(_donhangservice.GetDonHang(id));
         }
 
         [AuthenticationFilterAttibute_KH]
@@ -323,6 +357,11 @@ namespace DuAnTotNghiep.Controllers
         }
 
         public ActionResult LienHe()
+        {
+            return View();
+        }
+
+        public ActionResult TinTuc()
         {
             return View();
         }
@@ -354,9 +393,16 @@ namespace DuAnTotNghiep.Controllers
         }
 
         // GET: HomeController/Details/5
+        [AuthenticationFilterAttibute_KH]
         public ActionResult ChiTietDonHang(int id)
         {
             return View(_donhangservice.GetDonHang(id));
         }
+
+        public ActionResult ChiTietSanPham(int id)
+        {
+            var sanpham = _sanphamservice.GetSanPham(id);
+            return View(sanpham);
+        }        
     }
 }

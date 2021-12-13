@@ -178,8 +178,8 @@ namespace DuAnTotNghiep.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Mota")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
+                        .HasMaxLength(750)
+                        .HasColumnType("nvarchar(750)");
 
                     b.Property<string>("Name")
                         .IsRequired()

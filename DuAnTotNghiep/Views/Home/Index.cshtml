@@ -33,6 +33,13 @@
     </div>
 </header>
 
+<div style="margin-top: 30px; text-align: center">
+    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+    {
+        @Html.TextBox("search")<input type="submit" value="Tìm kiếm" name="submit" />
+    }
+</div>
+
 <div class="wrapper rounded bg-white">
     <div class="row px-sm-2 px-0 pt-3">
         @foreach (var item in Model)
@@ -41,13 +48,15 @@
                 <div class="card">
                     <div class="px-2 red text-uppercase">new</div>
                     <div class="d-flex justify-content-center">
-                        <img src="~/Images/hinhanh/@item.HinhAnh" class="product" alt="">
+                        <a asp-action="ChiTietSanPham" asp-route-id="@item.SanPhamId">
+                            <img src="~/Images/hinhanh/@item.HinhAnh" class="product" alt="">
+                        </a>
                     </div>
                     <b class="px-2">
                         <p class="h4">@item.Name</p>
                     </b>
                     <div class="d-flex align-items-center justify-content-between py-2 px-3">
-                        <div class="h4">@item.Gia (VNĐ)</div>
+                        <div class="h4">@string.Format("{0:#,0}", @item.Gia) (VNĐ)</div>
                         <div>
                             <a class="btn btn-dark text-uppercase" href="javascript:addCart(@item.SanPhamId);">
                                 Mua hàng <img id="imgBusy_@item.SanPhamId" src="~/Images/busy.gif" style="display: none" />
@@ -135,11 +144,11 @@
                     <a class="brand" href="index.html"><img class="brand-logo-light" src="~/Images/KINGSHOES01.png" alt="" width="140" height="37" srcset="images/agency/logo-retina-inverse-280x74.png 2x"></a>
                     <p>
                         <h5>Chất lượng</h5>
-                        <h6>King Shoes đảm bảo chất lượng cho tất cả sản phẩm bán tại cửa hàng bằng chính sách bản hàng vĩnh viễn.</h6>
+                        <h6>KingShoes đảm bảo chất lượng cho tất cả sản phẩm bán tại cửa hàng bằng chính sách bản hàng vĩnh viễn.</h6>
                         <h5>Phục vụ</h5>
-                        <h6>Kinh Shoes cam kết chất lượng phục vụ tốt nhất, chuyên nghiệp nhất cho mọi khách hàng bằng chính sách hoàn tiền và tặng quà nếu nhân viên phục vụ quý khách không chu đáo.</h6>
+                        <h6>KingShoes cam kết chất lượng phục vụ tốt nhất, chuyên nghiệp nhất cho mọi khách hàng bằng chính sách hoàn tiền và tặng quà nếu nhân viên phục vụ quý khách không chu đáo.</h6>
                     </p>
-                    <p class="rights"><span>©  </span><span class="copyright-year">2018</span><span> </span><span>King Shops</span><span>. </span><span>All Rights Reserved.</span></p>
+                    <p class="rights"><span>©  </span><span class="copyright-year">2021</span><span> </span><span>King Shops</span><span>. </span><span>All Rights Reserved.</span></p>
                 </div>
             </div>
             <div class="col-md-4">
@@ -166,6 +175,7 @@
                 <ul class="nav-list">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Trang chủ</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="GioiThieu">Giới thiệu</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="TinTuc">Tin tức</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="LienHe">Liên hệ</a></li>
                 </ul>
             </div>
@@ -176,7 +186,7 @@
 <script>
     // Sự kiện khi bấm thêm vào giỏ
     function addCart(id) {
-        $("#imgCart").attr("src", '/Images/cartA.png');
+        $("#imgCart").attr("src", '/Images/cartB.png');
         $("#imgBusy_" + id).show();
         setTimeout(function () {
             $.ajax({

@@ -136,7 +136,6 @@ D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\obj\Debug\net5.0\Razor\Vi
 D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\obj\Debug\net5.0\Razor\Views\DonHang\Index.cshtml.g.cs
 D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\obj\Debug\net5.0\Razor\Views\DonHang\Details.cshtml.g.cs
 D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\obj\Debug\net5.0\Razor\Views\Home\Cart.cshtml.g.cs
-D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\obj\Debug\net5.0\Razor\Views\Home\Details.cshtml.g.cs
 D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\obj\Debug\net5.0\Razor\Views\Home\History.cshtml.g.cs
 D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\obj\Debug\net5.0\Razor\Views\Home\Info.cshtml.g.cs
@@ -172,7 +171,6 @@ D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\obj\Debug\net5.0\Razor\Vi
 D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\bin\Debug\net5.0\PagedList.dll
 D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\bin\Debug\net5.0\PagedList.Mvc.dll
 D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\obj\Debug\net5.0\Razor\Views\Home\GioiThieu.cshtml.g.cs
-D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\obj\Debug\net5.0\Razor\Views\Home\ProductDetails.cshtml.g.cs
 D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\bin\Debug\net5.0\System.Web.Mvc.dll
 D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\bin\Debug\net5.0\System.Web.Razor.dll
 D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\bin\Debug\net5.0\System.Web.Helpers.dll
@@ -182,3 +180,5 @@ D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\bin\Debug\net5.0\System.W
 D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\bin\Debug\net5.0\Microsoft.Web.Infrastructure.dll
 D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\bin\Debug\net5.0\X.PagedList.Mvc.dll
 D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\obj\Debug\net5.0\Razor\Views\Home\ChiTietDonHang.cshtml.g.cs
+D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\obj\Debug\net5.0\Razor\Views\Home\ChiTietSanPham.cshtml.g.cs
+D:\Du_an_TN_(UDPM_NetCore)\DuAnTotNghiep\DuAnTotNghiep\obj\Debug\net5.0\Razor\Views\Home\TinTuc.cshtml.g.cs

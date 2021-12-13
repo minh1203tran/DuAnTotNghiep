@@ -10,7 +10,7 @@
     Layout = "~/Views/Shared/_WebLayout.cshtml";
 }
 
-<h1>Cart</h1>
+<h1>Giỏ hàng</h1>
 <table class="table">
     <tr>
         <th>STT</th>
@@ -31,18 +31,18 @@
             stt++;
             double totalSub = item.SanPham.Gia * item.Quantity;
             total += totalSub;
-        <tr id="tr_@id">
-            <td>@stt</td>
-            <td>@item.SanPham.Name</td>
-            <td><img src="~/Images/hinhanh/@item.SanPham.HinhAnh" style="width: 150px;" /></td>
-            <td><input type="number" id="@txt_Id" value="@item.Quantity" onchange="() => javascript:updateCart(@id);"/></td>
-            <td><span id="tdGia_@id">@item.SanPham.Gia</span> VNĐ</td>
-            <td><span id="tdTien_@id">@totalSub</span> VNĐ</td>
-            <td>
-                <a href="javascript:updateCart(@id);" class="btn btn-primary">Cập nhật</a>
-                <a href="javascript:deleteCart(@id);" class="btn btn-primary">Xóa</a>
-            </td>
-        </tr>
+            <tr id="tr_@id">
+                <td>@stt</td>
+                <td>@item.SanPham.Name</td>
+                <td><img src="~/Images/hinhanh/@item.SanPham.HinhAnh" style="width: 150px;" /></td>
+                <td><input min="1" type="number" id="@txt_Id" value="@item.Quantity" 
+                           onchange="javascript:updateCart(@id)"/></td>
+                <td><span id="tdGia_@id">@item.SanPham.Gia</span> VNĐ</td>
+                <td><span id="tdTien_@id">@totalSub</span> VNĐ</td>
+                <td>
+                    <a href="javascript:deleteCart(@id);" class="btn btn-primary">Xóa</a>
+                </td>
+            </tr>
         }
 
 
@@ -50,18 +50,19 @@
 </table>
 @if (total == 0)
 {
-    <p><div>Tổng tiền: 0 VNĐ</div></p>
+    <p><div>Tổng tiền: @string.Format("{0:#,0}", 0) VNĐ</div></p>
 }
 else
 {
-    <p><div>Tổng tiền: <span id="spTotal">@total</span> VNĐ</div></p>
+    <p><div>Tổng tiền: <span id="spTotal">@string.Format("{0:#,0}", @total)</span> VNĐ</div></p>
 }
 
 <p>
     @if (emailaddress != null && emailaddress != "")
     {
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-            Đặt hàng
+        <a asp-action="Index" style="color: black" class="btn btn-light"><i class="fas fa-angle-left"></i> Tiếp tục mua sắm</a>
+        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter" style="float: right; margin-right: 100px; color: white">
+            Thanh toán <i class="fas fa-angle-right"></i>
         </button>
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -82,14 +83,12 @@ else
                 </div>
             </div>
         </div>
-        <div>
-            <a asp-action="Index" class=" btn btn-primary">Trở về trang chủ</a>
-        </div>
     }
     else
     {
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-            Đặt hàng
+        <a asp-action="Index" style="color: black" class="btn btn-light"><i class="fas fa-angle-left"></i> Tiếp tục mua sắm</a>
+        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter" style="float: right; margin-right: 100px; color: white">
+            Thanh toán <i class="fas fa-angle-right"></i>
         </button>
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -108,9 +107,6 @@ else
                     </div>
                 </div>
             </div>
-        </div>
-        <div>
-            <a asp-action="Index" class=" btn btn-primary">Trở về trang chủ</a>
         </div>
     }
 </p>
@@ -174,9 +170,6 @@ else
         });
     }
 </script>
-@*<div>
-    <a asp-action="Index" class=" btn btn-primary">Trở về trang chủ</a>
-</div>*@
 @section Scripts{
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }
